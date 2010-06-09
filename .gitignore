@@ -1,0 +1,9 @@
+.installed.cfg
+.mr.developer.cfg
+bin/
+develop-eggs/
+eggs/
+src/
+parts/
+deliverance.xml
+theme/.sass-cache/

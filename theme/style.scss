@@ -1,0 +1,90 @@
+/*
+ * Copyright (C) 2010  Asko Soukka <asko.soukka@iki.fi>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "deco-gs";
+
+@mixin box-shadow {
+	box-shadow: 0 0.25em 0.75em black;
+  -moz-box-shadow: 0 0.25em 0.75em black;
+  -webkit-box-shadow: 0 0.25em 0.75em black;
+}
+
+@mixin border-radius($top-left: none, $top-right: none, $bottom-right: none, $bottom-left: none) {
+    border-top-left-radius: $top-left;
+    -webkit-border-top-left-radius: $top-left;
+    -moz-border-radius-topleft: $top-left;
+
+    border-top-right-radius: $top-right;
+    -webkit-border-top-right-radius: $top-right;
+    -moz-border-radius-topright: $top-right;
+
+    border-bottom-right-radius: $bottom-right;
+    -webkit-border-bottom-right-radius: $bottom-right;
+    -moz-border-radius-bottomright: $bottom-right;
+
+    border-bottom-left-radius: $bottom-left;
+    -webkit-border-bottom-left-radius: $bottom-left;
+    -moz-border-radius-bottomleft: $bottom-left;
+}
+
+@mixin vertical-gradient($from: white, $to: white) {
+    background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background-image: -moz-linear-gradient(top, $from, $to);
+}
+
+body {
+ 	@include deco-grid(44em, 6, 1em/16);
+	max-width: 44em;
+  margin-left: auto;
+	margin-right: auto;
+	font-size: 62.5% * 1.6; /* 1em = 16px */
+  #header, #content, #footer {
+    @include deco-row;
+  }
+  #header {
+    border-bottom: 1px solid gray;
+    h1 { @include deco-cell(0, 6, 1em, 1em); }
+  }
+  #content {
+    #main {
+      @include deco-cell(0, 4, 1em);
+      overflow: hidden;
+      border-right: 1px solid gray;
+    }
+    #sidebar {
+      @include deco-cell(4, 2, 0, 1em);
+      overflow: hidden;
+      ul {
+        padding-left: 1em;
+        li {
+          margin-left: 1em;
+          list-style-type: none;
+          white-space: nowrap;
+          &.selected:before {
+            margin-left: -1.1em;
+            content: "→ ";
+          }
+          ul { padding-left: 0; }
+        }
+      }
+    }
+  }
+  #footer {
+    border-top: 1px solid gray;
+    p { @include deco-cell(0, 6, 1em, 1em); }
+  }
+}

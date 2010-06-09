@@ -1,0 +1,81 @@
+/*
+ * Copyright (C) 2010  Asko Soukka <asko.soukka@iki.fi>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/**
+ * Deco Grid System for SASS3 by Asko Soukka <asko.soukka@iki.fi>
+ * For originals by Alexander Limi, see http://deco.gs/
+ *
+ * Deco Grid System is Public Domain.
+ */
+body {
+  max-width: 44em;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 100%;
+  /* 1em = 16px */ }
+  body #header, body #content, body #footer {
+    float: left;
+    width: 100%;
+    display: block;
+    position: relative; }
+  body #header {
+    border-bottom: 1px solid gray; }
+    body #header h1 {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: 95.455%;
+      margin-left: -100%;
+      padding-left: 2.273%;
+      padding-right: 2.273%; }
+  body #content #main {
+    position: relative;
+    float: left;
+    left: 100%;
+    width: 64.347%;
+    margin-left: -100%;
+    padding-left: 2.273%;
+    overflow: hidden;
+    border-right: 1px solid gray; }
+  body #content #sidebar {
+    position: relative;
+    float: left;
+    left: 100%;
+    width: 30.966%;
+    margin-left: -33.239%;
+    padding-right: 2.273%;
+    overflow: hidden; }
+    body #content #sidebar ul {
+      padding-left: 1em; }
+      body #content #sidebar ul li {
+        margin-left: 1em;
+        list-style-type: none;
+        white-space: nowrap; }
+        body #content #sidebar ul li.selected:before {
+          margin-left: -1.1em;
+          content: "→ "; }
+        body #content #sidebar ul li ul {
+          padding-left: 0; }
+  body #footer {
+    border-top: 1px solid gray; }
+    body #footer p {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: 95.455%;
+      margin-left: -100%;
+      padding-left: 2.273%;
+      padding-right: 2.273%; }

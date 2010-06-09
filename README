@@ -1,0 +1,13 @@
+# 1. Bootstrap
+$ python ./bootstrap.py
+
+# 2. Buildout
+$ ./bin/buildout
+
+# 3. If successful, launch Deliverance proxy for link-rewrite
+$ ./bin/deliverance-proxy parts/deliverance.xml
+
+# 4. Launch dv.xdvserver
+$ ./bib/paster serve xdvserver.cfg
+
+# 5. Open http://localhost:8000/

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules xmlns="http://namespaces.plone.org/xdv"
+       xmlns:css="http://namespaces.plone.org/xdv+css"
+       xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <replace theme="/html/head/title" content="/html/head/title"/>
+
+  <replace theme="//*[@id='header']/*" css:content="h1" />
+
+  <drop css:content="hr, dfn" />
+  <replace theme="//*[@id='main']/*" css:content="#main *, #etusivu1, #etusivu2, #etusivu3" />
+
+  <replace theme="//*[@id='sidebar']/*">
+    <ul>
+      <xsl:for-each select="//*[@id='mainmenu']/ul/li">
+        <li>
+          <xsl:if test="contains(@class, 'currentpage') or contains(@class, 'activeparent')">
+            <xsl:attribute name="class">
+              <xsl:text>selected</xsl:text>
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:copy-of select="a">
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+          </xsl:copy-of>
+          <xsl:if test="(contains(@class, 'currentpage') or contains(@class, 'activeparent')) and //*[@id='submenu']/ul/li">
+            <ul>
+              <xsl:for-each select="//*[@id='submenu']/ul/li">
+                <li>
+                  <xsl:if test="contains(@class, 'currentpage')">
+                    <xsl:attribute name="class">
+                      <xsl:text>selected</xsl:text>
+                    </xsl:attribute>
+                  </xsl:if>
+                  <xsl:copy-of select="a">
+                    <xsl:copy-of select="@*"/>
+                    <xsl:apply-templates/>
+                  </xsl:copy-of>
+                </li>
+              </xsl:for-each>
+            </ul>
+          </xsl:if>
+        </li>
+      </xsl:for-each>
+    </ul>
+  </replace>
+
+  <replace theme="//*[@id='footer']/*" css:content="#footer .footerboxes_1 > p" />
+
+  <!--
+  <xsl:template match="*">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  -->
+</rules>
