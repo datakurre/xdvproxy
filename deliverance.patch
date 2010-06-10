@@ -1,5 +1,5 @@
---- eggs/Deliverance-0.3c4-py2.6.egg/deliverance/proxy.py	2010-06-10 03:35:32.000000000 +0300
-+++ eggs/Deliverance-0.3c5dev-py2.6.egg/deliverance/proxy.py	2010-06-10 03:31:00.000000000 +0300
+--- eggs/Deliverance-0.3c4-py2.6.egg/deliverance/proxy.py	2010-06-10 11:20:51.000000000 +0300
++++ eggs/Deliverance-0.3c5dev-py2.6.egg/deliverance/proxy.py	2010-06-10 11:19:51.000000000 +0300
 @@ -620,11 +620,11 @@
              def link_repl_func(link):
                  """Rewrites a link to point to this proxy"""
@@ -14,18 +14,25 @@
                  return new
              if response.content_type != 'text/html':
                  log.debug(
-@@ -636,7 +636,7 @@
-                     ## FIXME: maybe we should guess the encoding?
+@@ -637,7 +637,10 @@
                      body = response.body
                  else:
--                    body = response.unicode_body
-+                    body = response.unicode_body.encode("latin-1")
-                 body_doc = document_fromstring(body, base_url=proxied_url)
+                     body = response.unicode_body
+-                body_doc = document_fromstring(body, base_url=proxied_url)
++                try:
++                    body_doc = document_fromstring(body, base_url=proxied_url)
++                except:
++                    body_doc = document_fromstring(body.encode(response.charset), base_url=proxied_url)
                  body_doc.make_links_absolute()
                  body_doc.rewrite_links(link_repl_func)
-@@ -651,7 +651,7 @@
+                 response.body = tostring(body_doc)
+@@ -649,9 +652,10 @@
+                 ## rewritten, but some better log message is required
+                 loc = urlparse.urljoin(proxied_url, response.location)
                  loc = link_repl_func(loc)
-                 response.location = loc
+-                response.location = loc
++                ## FIXME: How to rewrite response.locations to dv.xdvserver's port?
++                response.location = "http://localhost:8000" + loc
              if 'set-cookie' in response.headers:
 -                cookies = response.headers.getall('set-cookie')
 +                cookies = [cookie.replace("; Secure", ";") for cookie in response.headers.getall('set-cookie')]
