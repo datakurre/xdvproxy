@@ -18,9 +18,9 @@
 @import "deco-gs";
 
 @mixin box-shadow {
-	box-shadow: 0 0.25em 0.75em black;
-  -moz-box-shadow: 0 0.25em 0.75em black;
-  -webkit-box-shadow: 0 0.25em 0.75em black;
+    box-shadow: 0 0.25em 0.75em black;
+    -moz-box-shadow: 0 0.25em 0.75em black;
+    -webkit-box-shadow: 0 0.25em 0.75em black;
 }
 
 @mixin border-radius($top-left: none, $top-right: none, $bottom-right: none, $bottom-left: none) {
@@ -47,11 +47,11 @@
 }
 
 body {
-   	@include deco-grid(44em, 6, 1em/16);
-  	max-width: 44em;
+    @include deco-grid(44em, 6, 1em/16);
+    max-width: 44em;
     margin-left: auto;
-  	margin-right: auto;
-  	font-size: 62.5% * 1.6; /* 1em = 16px */
+    margin-right: auto;
+    font-size: 62.5% * 1.6; /* 1em = 16px */
     #header {
         @include deco-row;
         border-bottom: 1px solid gray;
