@@ -26,14 +26,13 @@ body {
   margin-right: auto;
   font-size: 100%;
   /* 1em = 16px */ }
-  body #header, body #content, body #footer {
+  body #header {
     float: left;
     width: 100%;
     display: block;
-    position: relative; }
-  body #header {
+    position: relative;
     border-bottom: 1px solid gray; }
-    body #header h1 {
+    body #header > .container {
       position: relative;
       float: left;
       left: 100%;
@@ -41,37 +40,46 @@ body {
       margin-left: -100%;
       padding-left: 2.273%;
       padding-right: 2.273%; }
-  body #content #main {
-    position: relative;
+  body #content {
     float: left;
-    left: 100%;
-    width: 64.347%;
-    margin-left: -100%;
-    padding-left: 2.273%;
-    overflow: hidden;
-    border-right: 1px solid gray; }
-  body #content #sidebar {
-    position: relative;
-    float: left;
-    left: 100%;
-    width: 30.966%;
-    margin-left: -33.239%;
-    padding-right: 2.273%;
-    overflow: hidden; }
-    body #content #sidebar ul {
-      padding-left: 1em; }
-      body #content #sidebar ul li {
-        margin-left: 1em;
-        list-style-type: none;
-        white-space: nowrap; }
-        body #content #sidebar ul li.selected:before {
-          margin-left: -1.1em;
-          content: "→ "; }
-        body #content #sidebar ul li ul {
-          padding-left: 0; }
+    width: 100%;
+    display: block;
+    position: relative; }
+    body #content #main {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: 64.347%;
+      margin-left: -100%;
+      padding-left: 2.273%;
+      border-right: 1px solid gray;
+      overflow: hidden; }
+    body #content #sidebar {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: 30.966%;
+      margin-left: -33.239%;
+      padding-right: 2.273%;
+      overflow: hidden; }
+      body #content #sidebar ul {
+        padding-left: 1em; }
+        body #content #sidebar ul li {
+          margin-left: 1em;
+          list-style-type: none;
+          white-space: nowrap; }
+          body #content #sidebar ul li.selected:before {
+            margin-left: -1.1em;
+            content: "→ "; }
+          body #content #sidebar ul li ul {
+            padding-left: 0; }
   body #footer {
+    float: left;
+    width: 100%;
+    display: block;
+    position: relative;
     border-top: 1px solid gray; }
-    body #footer p {
+    body #footer > .container {
       position: relative;
       float: left;
       left: 100%;

@@ -47,44 +47,50 @@
 }
 
 body {
- 	@include deco-grid(44em, 6, 1em/16);
-	max-width: 44em;
-  margin-left: auto;
-	margin-right: auto;
-	font-size: 62.5% * 1.6; /* 1em = 16px */
-  #header, #content, #footer {
-    @include deco-row;
-  }
-  #header {
-    border-bottom: 1px solid gray;
-    h1 { @include deco-cell(0, 6, 1em, 1em); }
-  }
-  #content {
-    #main {
-      @include deco-cell(0, 4, 1em);
-      overflow: hidden;
-      border-right: 1px solid gray;
-    }
-    #sidebar {
-      @include deco-cell(4, 2, 0, 1em);
-      overflow: hidden;
-      ul {
-        padding-left: 1em;
-        li {
-          margin-left: 1em;
-          list-style-type: none;
-          white-space: nowrap;
-          &.selected:before {
-            margin-left: -1.1em;
-            content: "→ ";
-          }
-          ul { padding-left: 0; }
+   	@include deco-grid(44em, 6, 1em/16);
+  	max-width: 44em;
+    margin-left: auto;
+  	margin-right: auto;
+  	font-size: 62.5% * 1.6; /* 1em = 16px */
+    #header {
+        @include deco-row;
+        border-bottom: 1px solid gray;
+        & > .container {
+            @include deco-cell(0, 6, 1em, 1em);
         }
-      }
     }
-  }
-  #footer {
-    border-top: 1px solid gray;
-    p { @include deco-cell(0, 6, 1em, 1em); }
-  }
+    #content {
+        @include deco-row;
+        #main {
+            @include deco-cell(0, 4, 1em, 0);
+            border-right: 1px solid gray;
+            overflow: hidden;
+        }
+        #sidebar {
+            @include deco-cell(4, 2, 0, 1em);
+            overflow: hidden;
+            ul {
+                padding-left: 1em;
+                li {
+                    margin-left: 1em;
+                    list-style-type: none;
+                    white-space: nowrap;
+                    &.selected:before {
+                        margin-left: -1.1em;
+                        content: "→ ";
+                    }
+                    ul {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    #footer {
+        @include deco-row;
+        border-top: 1px solid gray;
+        & > .container {
+            @include deco-cell(0, 6, 1em, 1em);
+        }
+    }
 }
