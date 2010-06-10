@@ -1,0 +1,34 @@
+--- eggs/Deliverance-0.3c4-py2.6.egg/deliverance/proxy.py	2010-06-10 03:35:32.000000000 +0300
++++ eggs/Deliverance-0.3c5dev-py2.6.egg/deliverance/proxy.py	2010-06-10 03:31:00.000000000 +0300
+@@ -620,11 +620,11 @@
+             def link_repl_func(link):
+                 """Rewrites a link to point to this proxy"""
+                 if link == exact_proxied_base:
+-                    return exact_orig_base
++                    pass
+                 if not link.startswith(proxied_base):
+                     # External link, so we don't rewrite it
+                     return link
+-                new = orig_base + link[len(proxied_base):]
++                new = "/" + link[len(proxied_base):]
+                 return new
+             if response.content_type != 'text/html':
+                 log.debug(
+@@ -636,7 +636,7 @@
+                     ## FIXME: maybe we should guess the encoding?
+                     body = response.body
+                 else:
+-                    body = response.unicode_body
++                    body = response.unicode_body.encode("latin-1")
+                 body_doc = document_fromstring(body, base_url=proxied_url)
+                 body_doc.make_links_absolute()
+                 body_doc.rewrite_links(link_repl_func)
+@@ -651,7 +651,7 @@
+                 loc = link_repl_func(loc)
+                 response.location = loc
+             if 'set-cookie' in response.headers:
+-                cookies = response.headers.getall('set-cookie')
++                cookies = [cookie.replace("; Secure", ";") for cookie in response.headers.getall('set-cookie')]
+                 del response.headers['set-cookie']
+                 for cook in cookies:
+                     old_domain = urlparse.urlsplit(proxied_url)[1].lower()
