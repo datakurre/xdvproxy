@@ -49,9 +49,10 @@ body {
       position: relative;
       float: left;
       left: 100%;
-      width: 64.347%;
+      width: 62.074%;
       margin-left: -100%;
       padding-left: 2.273%;
+      padding-right: 2.273%;
       border-right: 1px solid gray;
       overflow: hidden; }
     body #content #sidebar {

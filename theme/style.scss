@@ -62,7 +62,7 @@ body {
     #content {
         @include deco-row;
         #main {
-            @include deco-cell(0, 4, 1em, 0);
+            @include deco-cell(0, 4, 1em, 1em);
             border-right: 1px solid gray;
             overflow: hidden;
         }
