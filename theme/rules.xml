@@ -12,7 +12,7 @@
 
   <drop theme="//*[@id='main']/*[@class='container']/*" />
   <append theme="//*[@id='main']/*[@class='container']"
-          css:content="#main *, #etusivu1, #etusivu2, #etusivu3" />
+          css:content="#main > *, #etusivu1, #etusivu2, #etusivu3" />
 
   <drop theme="//*[@id='sidebar']/*[@class='container']/*" />
   <append theme="//*[@id='sidebar']/*[@class='container']">
