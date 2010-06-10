@@ -55,12 +55,10 @@
   <append theme="//*[@id='footer']/*[@class='container']"
           css:content="#footer .footerboxes_1 > p" />
 
-  <!--
   <xsl:template match="*">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  -->
 </rules>
