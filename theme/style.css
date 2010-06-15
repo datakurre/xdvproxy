@@ -20,71 +20,126 @@
  *
  * Deco Grid System is Public Domain.
  */
+html {
+  padding-right: 0.75em;
+  padding-left: 0.75em; }
+
 body {
-  max-width: 44em;
+  border-top-left-radius: 1ex;
+  -webkit-border-top-left-radius: 1ex;
+  -moz-border-radius-topleft: 1ex;
+  border-top-right-radius: 1ex;
+  -webkit-border-top-right-radius: 1ex;
+  -moz-border-radius-topright: 1ex;
+  border-bottom-right-radius: 1ex;
+  -webkit-border-bottom-right-radius: 1ex;
+  -moz-border-radius-bottomright: 1ex;
+  border-bottom-left-radius: 1ex;
+  -webkit-border-bottom-left-radius: 1ex;
+  -moz-border-radius-bottomleft: 1ex;
+  box-shadow: 0 0.25em 0.75em black;
+  -moz-box-shadow: 0 0.25em 0.75em black;
+  -webkit-box-shadow: 0 0.25em 0.75em black;
+  max-width: 52em;
   margin-left: auto;
   margin-right: auto;
   font-size: 100%;
   /* 1em = 16px */ }
+  body a img {
+    border: none; }
+  body .rellink, body .dablink {
+    font-style: italic; }
   body #header {
-    float: left;
-    width: 100%;
-    display: block;
-    position: relative;
-    border-bottom: 1px solid gray; }
-    body #header > .container {
-      position: relative;
-      float: left;
-      left: 100%;
-      width: 95.455%;
-      margin-left: -100%;
-      padding-left: 2.273%;
-      padding-right: 2.273%; }
-  body #content {
+    border-top-left-radius: 1ex;
+    -webkit-border-top-left-radius: 1ex;
+    -moz-border-radius-topleft: 1ex;
+    border-top-right-radius: 1ex;
+    -webkit-border-top-right-radius: 1ex;
+    -moz-border-radius-topright: 1ex;
+    border-bottom-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    border-bottom-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(silver), to(white));
+    background-image: -moz-linear-gradient(top, silver, white);
     float: left;
     width: 100%;
     display: block;
     position: relative; }
-    body #content #main {
+    body #header > .container {
       position: relative;
       float: left;
       left: 100%;
-      width: 62.074%;
+      width: 96.154%;
       margin-left: -100%;
-      padding-left: 2.273%;
-      padding-right: 2.273%;
-      border-right: 1px solid gray;
-      overflow: hidden; }
-    body #content #sidebar {
-      position: relative;
-      float: left;
-      left: 100%;
-      width: 30.966%;
-      margin-left: -33.239%;
-      padding-right: 2.273%;
-      overflow: hidden; }
-      body #content #sidebar ul {
-        padding-left: 1em; }
-        body #content #sidebar ul li {
-          margin-left: 1em;
-          list-style-type: none;
-          white-space: nowrap; }
-          body #content #sidebar ul li.selected:before {
-            margin-left: -1.1em;
-            content: "→ "; }
-          body #content #sidebar ul li ul {
-            padding-left: 0; }
-  body #footer {
+      padding-left: 1.923%;
+      padding-right: 1.923%;
+      text-align: center; }
+      body #header > .container h1 {
+        margin: 2em auto; }
+      body #header > .container #logo {
+        position: absolute;
+        background-position: left center;
+        background-repeat: no-repeat;
+        height: 160px;
+        width: 160px;
+        text-decoration: none; }
+  body #content {
     float: left;
     width: 100%;
     display: block;
     position: relative;
-    border-top: 1px solid gray; }
+    background-color: white; }
+    body #content #main {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: 96.154%;
+      margin-left: -100%;
+      padding-left: 1.923%;
+      padding-right: 1.923%; }
+    body #content #sidebar {
+      position: relative;
+      float: left;
+      left: 100%;
+      width: -3.966%;
+      margin-left: -100%;
+      padding-left: 1.923%;
+      padding-right: 1.923%;
+      display: none; }
+  body #footer {
+    border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    border-top-right-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    border-bottom-right-radius: 1ex;
+    -webkit-border-bottom-right-radius: 1ex;
+    -moz-border-radius-bottomright: 1ex;
+    border-bottom-left-radius: 1ex;
+    -webkit-border-bottom-left-radius: 1ex;
+    -moz-border-radius-bottomleft: 1ex;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(silver));
+    background-image: -moz-linear-gradient(top, white, silver);
+    float: left;
+    width: 100%;
+    display: block;
+    position: relative; }
     body #footer > .container {
       position: relative;
       float: left;
       left: 100%;
-      width: 95.455%;
+      width: 96.154%;
       margin-left: -100%;
-      padding-left: 2.273%;
-      padding-right: 2.273%; }
+      padding-left: 1.923%;
+      padding-right: 1.923%;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      text-align: right; }
+  body:after {
+    clear: both;
+    display: block;
+    content: ""; }

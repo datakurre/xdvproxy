@@ -46,51 +46,70 @@
     background-image: -moz-linear-gradient(top, $from, $to);
 }
 
+html {
+  padding-right: 0.75em;
+  padding-left: 0.75em;
+}
+
 body {
-    @include deco-grid(44em, 6, 1em/16);
-    max-width: 44em;
+    @include deco-grid(52em, 6, 1em/16);
+    @include border-radius(1ex, 1ex, 1ex, 1ex);
+    @include box-shadow;
+    max-width: 52em;
     margin-left: auto;
     margin-right: auto;
     font-size: 62.5% * 1.6; /* 1em = 16px */
+    a img {
+        border: none;
+    }
+    .rellink, .dablink {
+        font-style: italic;
+    }
     #header {
+        @include border-radius(1ex, 1ex, 0, 0);
+        @include vertical-gradient(silver, white);
         @include deco-row;
-        border-bottom: 1px solid gray;
         & > .container {
             @include deco-cell(0, 6, 1em, 1em);
+            text-align: center;
+            h1 {
+              margin: 2em auto;
+            }
+            #logo {
+                position: absolute;
+                background-position: left center;
+                background-repeat: no-repeat;
+                height: 160px;
+                width: 160px;
+                text-decoration: none;
+            }
         }
     }
     #content {
         @include deco-row;
+        background-color: white;
         #main {
-            @include deco-cell(0, 4, 1em, 1em);
-            border-right: 1px solid gray;
-            overflow: hidden;
+            @include deco-cell(0, 6, 1em, 1em);
         }
         #sidebar {
-            @include deco-cell(4, 2, 0, 1em);
-            overflow: hidden;
-            ul {
-                padding-left: 1em;
-                li {
-                    margin-left: 1em;
-                    list-style-type: none;
-                    white-space: nowrap;
-                    &.selected:before {
-                        margin-left: -1.1em;
-                        content: "→ ";
-                    }
-                    ul {
-                        padding-left: 0;
-                    }
-                }
-            }
+            @include deco-cell(0, 0, 1em, 1em);
+            display: none;
         }
     }
     #footer {
+      @include border-radius(0, 0, 1ex, 1ex);
+      @include vertical-gradient(white, silver);
         @include deco-row;
-        border-top: 1px solid gray;
         & > .container {
             @include deco-cell(0, 6, 1em, 1em);
+            padding-top: 1em;
+            padding-bottom: 1em;
+            text-align: right;
         }
+    }
+    &:after {
+      clear: both;
+      display: block;
+      content: "";
     }
 }

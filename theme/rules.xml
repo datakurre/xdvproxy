@@ -4,56 +4,39 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <replace theme="/html/head/title" content="/html/head/title"/>
 
-  <drop css:content="hr, dfn" />
+  <drop css:content="#jump-to-nav,#siteSub" />
 
-  <drop theme="//*[@id='header']/*[@class='container']/*" />
+  <drop css:content=".infobox,.navbox,.metadata,.magnify,.reference,.references-small" />
+  <drop css:content=".toccolours,.thumb,.mw-hidden-cats-hidden,.printfooter,.editsection" />
+
+  <drop content="//h2/*[contains(@id, 'Notes')]" />
+  <drop content="//h2/*[contains(@id, 'References')]" />
+
+  <replace theme="//*[@id='header']/*[@class='container']/*">
+    <xsl:for-each select="//*[@id='p-logo']/a">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:attribute name="id">
+          <xsl:text>logo</xsl:text>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+      </xsl:copy>
+    </xsl:for-each>
+  </replace>
+
   <append theme="//*[@id='header']/*[@class='container']"
-          css:content="h1" />
+          css:content="#firstHeading" />
 
-  <drop theme="//*[@id='main']/*[@class='container']/*" />
-  <append theme="//*[@id='main']/*[@class='container']"
-          css:content="#main > *, #etusivu1, #etusivu2, #etusivu3" />
-
-  <drop theme="//*[@id='sidebar']/*[@class='container']/*" />
-  <append theme="//*[@id='sidebar']/*[@class='container']">
-    <ul>
-      <xsl:for-each select="//*[@id='mainmenu']/ul/li">
-        <li>
-          <xsl:if test="contains(@class, 'currentpage') or contains(@class, 'activeparent')">
-            <xsl:attribute name="class">
-              <xsl:text>selected</xsl:text>
-            </xsl:attribute>
-          </xsl:if>
-          <xsl:copy-of select="a">
-            <xsl:copy-of select="@*"/>
-            <xsl:apply-templates/>
-          </xsl:copy-of>
-          <xsl:if test="(contains(@class, 'currentpage') or contains(@class, 'activeparent'))
-                       and //*[@id='submenu']/ul/li">
-            <ul>
-              <xsl:for-each select="//*[@id='submenu']/ul/li">
-                <li>
-                  <xsl:if test="contains(@class, 'currentpage')">
-                    <xsl:attribute name="class">
-                      <xsl:text>selected</xsl:text>
-                    </xsl:attribute>
-                  </xsl:if>
-                  <xsl:copy-of select="a">
-                    <xsl:copy-of select="@*"/>
-                    <xsl:apply-templates/>
-                  </xsl:copy-of>
-                </li>
-              </xsl:for-each>
-            </ul>
-          </xsl:if>
-        </li>
-      </xsl:for-each>
-    </ul>
-  </append>
-
-  <drop theme="//*[@id='footer']/*[@class='container']/*" />
-  <append theme="//*[@id='footer']/*[@class='container']"
-          css:content="#footer .footerboxes_1 > p" />
+  <!--
+  <replace theme="//*[@id='sidebar']/*[@class='container']/*"
+           css:content="#toc td > ul" />
+  -->
+  
+  <replace theme="//*[@id='main']/*[@class='container']/*"
+           content="//*[@id='bodyContent']/*[not(contains(@id, 'toc') or contains(@id, 'catlinks'))]" />
+  
+  <replace theme="//*[@id='footer']/*[@class='container']/*"
+           css:content="#catlinks" />
 
   <xsl:template match="*">
     <xsl:copy>
